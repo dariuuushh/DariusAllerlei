@@ -1,7 +1,5 @@
 package dariuuuushh.dariusallerlei.data
 
-import TodoDao
-import TodoItemEntity
 import androidx.lifecycle.LiveData
 
 class TodoRepository(private val todoDao: TodoDao) {

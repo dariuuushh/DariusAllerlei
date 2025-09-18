@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import dariuuuushh.dariusallerlei.data.TodoDatabase
 import dariuuuushh.dariusallerlei.data.TodoRepository
+import dariuuuushh.dariusallerlei.data.TodoItemEntity
 import kotlinx.coroutines.launch
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
