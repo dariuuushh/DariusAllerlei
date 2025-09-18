@@ -1,33 +1,32 @@
-package dariuuuushh.dariusallerlei.ui.home
-
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import dariuuuushh.dariusallerlei.data.TodoDatabase
+import dariuuuushh.dariusallerlei.data.TodoRepository
+import kotlinx.coroutines.launch
 
-data class TodoItem(
-    val id: Int,
-    var text: String,
-    var isStartIconVisible: Boolean,
-)
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
-class HomeViewModel : ViewModel() {
+    private val repository: TodoRepository
+    private val todos: LiveData<List<TodoItemEntity>>
 
-    private val _todos = MutableLiveData<MutableList<TodoItem>>().apply {
-        value = mutableListOf()
+    init {
+        val todoDao = TodoDatabase.getDatabase(application).todoDao()
+        repository = TodoRepository(todoDao)
+        todos = repository.allTodos
     }
-    // val todos: LiveData<MutableList<TodoItem>> = _todos
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "ToDo-List"
+    fun addTodoItem(description: String, isChecked: Boolean) {
+        viewModelScope.launch {
+            val todoItem = TodoItemEntity(description = description, isChecked = isChecked)
+            repository.insert(todoItem)
+        }
     }
-    val text: LiveData<String> = _text
 
-//    fun addTodoItem(todoItem: TodoItem) {
-//        _todos.value?.add(todoItem)
-//        _todos.value = _todos.value
-//    }
-//
-//    fun updateTodoItem(todoItem: TodoItem) {
-//        _todos.value = _todos.value
-//    }
+    fun updateTodoItem(todoItem: TodoItemEntity) {
+        viewModelScope.launch {
+            repository.update(todoItem)
+        }
+    }
 }

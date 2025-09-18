@@ -11,5 +11,6 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="todo">ToDo</string>
-    <string name="plus">+</string>
+    <string name="todo_hinzufuegen">+ ToDo hinzufügen</string>
+    <string name="dariusallerlei">DariusAllerlei</string>
 </resources>

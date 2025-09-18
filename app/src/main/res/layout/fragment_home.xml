@@ -27,14 +27,15 @@
 
         <Button
             android:id="@+id/todo_date_button"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="24dp"
             android:text="Datum auswählen"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/text_home"
-            app:layout_constraintStart_toEndOf="@id/text_home" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text_home"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TableLayout
             android:id="@+id/toDoList"
@@ -56,8 +57,9 @@
                 <Button
                     android:id="@+id/todo_add_button"
                     android:layout_width="wrap_content"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_margin="20dp"
-                    android:text="@string/plus" />
+                    android:text="@string/todo_hinzufuegen" />
             </TableRow>
         </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

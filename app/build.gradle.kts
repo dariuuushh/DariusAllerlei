@@ -1,7 +1,11 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
+
+apply(plugin = "kotlin-kapt")
 
 android {
     namespace = "dariuuuushh.dariusallerlei"
@@ -10,7 +14,7 @@ android {
     defaultConfig {
         applicationId = "dariuuuushh.dariusallerlei"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -38,8 +42,13 @@ android {
     }
 }
 
-dependencies {
+//configurations.all {
+//    resolutionStrategy {
+//        force ("org.jetbrains:annotations:23.0.0")
+//    }
+//}
 
+dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -48,6 +57,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
